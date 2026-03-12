@@ -1,160 +1,111 @@
-.heading{
-    font-family:"Roboto";
-    color:#262525;
-    font-size:30px;
-    margin: 20px;
-    font-weight: bold;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
-.container{
-    color:#e4fafe;
+.container {
+    display: grid;
+    grid-template-columns: 1fr 3.5fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    height: 100vh;
 }
-.product-card{
-    display: flex;
-    align-items: center; 
-    gap: 30px; 
-    width: 900px; 
-    margin: 45px; 
-    background-color: linear-gradient(to top #dadada, #e1e1e1 );
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 6px 6px 6px 6px rgba(243, 243, 243, 0.596);
-}
-.shoes-image{
-    margin: 20px;
-    border-width: 0px;
-    border-radius: 5px;
-    height: 170px;
-    width: 160px;
-    box-shadow: 6px 6px 6px 6px rgba(227, 226, 226, 0.658);
-}
-.about-shoes{
-    font-family: "Arial";
-    font-size: 16px;
-    padding: 20px;
-    color: #393939;
-}
-.price{
-    display: flex; 
-    align-items: center;
-    gap: 6px;
-}
-.shoes-price{
-    font-family: "Arial"; 
-    color: #797979;
-    font-size: 15px;
-    margin-left: 30px;
-    text-decoration: line-through;
-}
-.discount{
-    font-family: "Arial";
-    color: #0a9c0a;
-}
-.buy-at{
-    font-family: "Arial";
-    font-size: 15px; 
-    color:#1245bc;
-    font-weight: bold;
-    margin-left: 30px;
-    
-}
-.select-size{
-    color: #434242;
-    font-weight: 500;
-    font-family: "Arial";
-    font-size: 13px;
-    margin-left: 30px;
-}
-.chart-size{
-    font-weight: bold;
-    color: #1245bc;
-}
-.size-options{
-    display: flex;
-    justify-content: space-between;
-    margin-left: 20px;
-}
-.size-btn{
-    width: 30px;
-    height: 30px;
-    border: 1px solid;
-    border-color: #ddd;
-    background: #ffffff;
-    border-radius: 10px;
-    font-size: 10px;
-    cursor: pointer;
-}
-.size-btn:hover {
-    border-color: #1a73e8;
-    background-color: #e8f0fe;
-}
-.reviews{
-    font-family: "Arial";
-    font-size: 12px;
-    color: #434242;
-    margin-left: 30px;
-    padding-top: 8px;
-}
-.ratings{
-    font-family: "Arial";
-    font-size: 13px;
-    color: #434242;
-    margin-left: 30px
-}
-.rated{
-    color:#eded29;
-}
-.unrated{
-    color: grey;
-}
-.features li{
-    padding: 10px;
-    font-family: "Arial";
-    list-style: none;
-    color: #393939;
-}
-.features li::before{
-    content: "\2714";
-    position: relative on li;
-    bottom: 0px;
-    top: 2px;
-    width: 22px; 
-    height: 22px;
-    background: #12cf57;
-    color: #ffffff;
-    border-radius: 10%;
+.header {
+    grid-area: header;
+    background: #2a5298;
+    color: white;
     text-align: center;
-    font-size: 13px; 
-    font-weight: bold;
-    margin-right: 10px;
-    padding: 3px;
+    padding: 15px;
 }
-.add-to-cart-btn{
-    font-family: "Arial";
-    color: #dedcdc;
+.sidebar {
+    grid-area: sidebar;
+    background: #f2f2f2;
+    padding: 20px;
+}
+.sidebar label {
+    display: block;
     padding: 10px;
-    margin: 17px;
-    border-width: 0px;
+    margin-bottom: 10px;
+    background: white;
+    cursor: pointer;
     border-radius: 5px;
-    background: linear-gradient(to bottom, #2bcd6e, #20c050);
+    transition: 0.5s;
 }
-.add-to-cart-btn:hover{
-    transform: scale(1.03);
-    box-shadow: 0px 5px 15px #28a745;
+.sidebar label:hover {
+    background: #e0e0e0; 
+}
+#dashboard:checked ~ .sidebar label[for="dashboard"],
+#profile:checked ~ .sidebar label[for="profile"],
+#settings:checked ~ .sidebar label[for="settings"],
+#logout:checked ~ .sidebar label[for="logout"] {
+    background: #2a5298;
+    color: white;  
+}
+.main {
+    grid-area: main;
+    padding: 20px;
+}
+.card {
+    background: #f8f9fc;
+    padding: 15px;
+    margin-top: 15px;
+    border-left: 5px solid #2a5298;
+    border-radius: 5px;
+    transition: transform 0.4s ease;
+    box-shadow: 0.4s ease;
+}
+.card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0px 15px 30px rgba(0,0,0,0.2);
+}
+.footer {
+    grid-area: footer;
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+input[type="radio"] {
+    display: none;
+}
+.page {
+    display: none;
+}
+#dashboard:checked ~ .main .dashboard-page {
+    display: block;
+}
+#profile:checked ~ .main .profile-page {
+    display: block;
+}
+#settings:checked ~ .main .settings-page {
+    display: block;
+}
+#logout:checked ~ .main .logout-page {
+    display: block;
+}
 
-}
-.order-now-btn{
-    font-family: "Arial";
-    color: #dedcdc;
-    padding: 10px; 
-    margin: 17px;
-    border-width: 0px;
+.logout-btn {
+    padding: 8px 15px;
+    background: #c52929;
+    color: white;
+    cursor: pointer;
+
+    border: none;
     border-radius: 5px;
-    background: linear-gradient(to bottom, #ff6b6b, #e35849);
 }
-.order-now-btn:hover{
-    transform: scale(1.03);
-    box-shadow: 0px 5px 15px #9f4e02;
-}
-i{
-    padding: 2px;
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "sidebar"
+            "main"
+            "footer";
+    }
+
+    input[type="text"] {
+        width: 100%;
+    }
 }
