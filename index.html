@@ -1,64 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Styling Product Card</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Interactive Responsive Layout</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="p-1 container">
-    <main class="container product-card">
-    <section class="product-image m-2">
-        <div>
-            <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?auto=format&fit=crop&w=600" class="shoes-image">
-            <div class="price">
-                <p class="shoes-price"><a class="price-deal">₹2,999</a></p>
-                <p class="discount"><strong><i class="fa-solid fa-arrow-down"></i>20%</strong></p>
-            </div> 
-            <p class="buy-at">Buy at ₹2,399</p> 
-            <p class="select-size">Select Size <a class="chart-size">Size Chart</a></p>
-            <div class="size-options">
-                <button class="size-btn">6</button>
-                <button class="size-btn">7</button>
-                <button class="size-btn">8</button>
-                <button class="size-btn">9</button>
-                <button class="size-btn">10</button>
+<body>
+
+<div class="container">
+
+    <header class="header">
+        <h1>My Dashboard System</h1>
+    </header>
+    <input type="radio" name="menu" id="dashboard" checked>
+    <input type="radio" name="menu" id="profile">
+    <input type="radio" name="menu" id="settings">
+    <input type="radio" name="menu" id="logout">
+
+    <aside class="sidebar">
+        <label for="dashboard">Dashboard</label>
+        <label for="profile">Profile</label>
+        <label for="settings">Settings</label>
+        <label for="logout">Logout</label>
+    </aside>
+
+    <main class="main">
+
+        <div class="page dashboard-page">
+
+            <h2>Dashboard Overview</h2>
+            <p>Welcome back, Sakshi! Here's a quick overview of your system activity.</p>
+
+            <div class="card">
+                <h3>Total Projects</h3>
+                <p>12 Active Projects</p>
             </div>
-            <p class="reviews">Reviews (120)</p>
-            <p class="ratings">
-                <i class="fa-solid fa-star rated"></i>
-                <i class="fa-solid fa-star rated"></i>
-                <i class="fa-solid fa-star rated"></i>
-                <i class="fa-solid fa-star rated"></i>
-                <i class="fa-solid fa-star unrated"></i>
-                <span>(4.0)</span></p>   
-        </div>
-    </section>
+            <div class="card">
+                <h3>Tasks Completed</h3>
+                <p>48 Tasks Successfully Completed</p>
+            </div>
+            <div class="card">
+                <h3>Pending Reviews</h3>
+                <p>3 Tasks Waiting for Approval</p>
+            </div>
 
-    <section class="product-text m-2"> 
-        <div>
-            <h2 class="heading"><strong>Urban Flex Running Shoes</strong></h2>
-            <p class="about-shoes">Step into comfort and confidence with the Urban Flex Running Shoes. Crafted with 
-                                   advanced cushioning technology and breathable fabric, these shoes ensures all-day 
-                                   freshness and superior support. The anti-slip sole provides stability on multiple 
-                                   surfaces, while the sleek design makes perfect for both workouts and everyday wear. 
-            </p>
-            <ul class="features">
-                <li>Lightweight & Breathable Mesh</li>
-                <li>Shock-Absorbing Cushioned Sole</li>
-                <li>Anti-Slip Rubber Outsole</li>
-                <li>Flexible & Comfortable Fit</li>
-            </ul>
+            <div class="card">
+                <h3>Performance Status</h3>
+                <p>Excellent Progress This Month</p>
+            </div>
         </div>
-        <div class="d-flex flex-row">
-            <button class="add-to-cart-btn"><i class="fa-solid fa-cart-shopping"></i> Add to Cart </button>
-            <button class="order-now-btn"><i class="fa-solid fa-box"></i> Order Now </button>
 
+        <div class="page profile-page">
+            <h2>Candidate Profile</h2>
+            <p><strong>Name:</strong> Sakshi Shinde</p>
+            <p><strong>Role:</strong> Frontend Developer</p>
+            <p><strong>Skills:</strong> HTML, CSS</p>
         </div>
-    </section>
+
+        <div class="page settings-page">
+            <h2>Settings</h2>
+            <p>Change Username:</p>
+            <input type="text" placeholder="Enter new username">
+            <br><br>
+            <button class="save-btn">Save Changes</button>
+        </div>
+
+        <div class="page logout-page">
+            <h2>Logout Page</h2>
+            <p>You have been logged out successfully.</p>
+            <label for="dashboard" class="logout-btn">Logout</label>
+        </div>
 
     </main>
+
+    <footer class="footer">
+        <p>© 2026 Sakshi Shinde</p>
+    </footer>
+     
+
+</div>
 
 </body>
 </html>
