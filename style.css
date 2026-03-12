@@ -1,111 +1,122 @@
-body {
+* {
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
 }
-.container {
-    display: grid;
-    grid-template-columns: 1fr 3.5fr;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas:
-        "header header"
-        "sidebar main"
-        "footer footer";
-    height: 100vh;
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
 }
-.header {
-    grid-area: header;
-    background: #2a5298;
-    color: white;
-    text-align: center;
-    padding: 15px;
+
+.page-wrapper {
+    width: 100%;
+    max-width: 500px;
 }
-.sidebar {
-    grid-area: sidebar;
-    background: #f2f2f2;
-    padding: 20px;
-}
-.sidebar label {
-    display: block;
-    padding: 10px;
-    margin-bottom: 10px;
+
+.quiz-card {
     background: white;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: 0.5s;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    animation: fadeIn 0.5s ease-in-out;
 }
-.sidebar label:hover {
-    background: #e0e0e0; 
-}
-#dashboard:checked ~ .sidebar label[for="dashboard"],
-#profile:checked ~ .sidebar label[for="profile"],
-#settings:checked ~ .sidebar label[for="settings"],
-#logout:checked ~ .sidebar label[for="logout"] {
-    background: #2a5298;
-    color: white;  
-}
-.main {
-    grid-area: main;
-    padding: 20px;
-}
-.card {
-    background: #f8f9fc;
-    padding: 15px;
-    margin-top: 15px;
-    border-left: 5px solid #2a5298;
-    border-radius: 5px;
-    transition: transform 0.4s ease;
-    box-shadow: 0.4s ease;
-}
-.card:hover{
-    transform: translateY(-10px);
-    box-shadow: 0px 15px 30px rgba(0,0,0,0.2);
-}
-.footer {
-    grid-area: footer;
-    background: #222;
-    color: white;
+
+.quiz-title {
     text-align: center;
+    margin-bottom: 15px;
+}
+
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: #eee;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#progressBar {
+    height: 100%;
+    width: 0%;
+    background: #28a745;
+    border-radius: 10px;
+    transition: 0.4s;
+}
+
+#questionCounter {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: rgb(38, 38, 38);
+}
+
+#question {
+    margin-bottom: 15px;
+}
+
+.option-btn {
+    width: 100%;
     padding: 10px;
-}
-input[type="radio"] {
-    display: none;
-}
-.page {
-    display: none;
-}
-#dashboard:checked ~ .main .dashboard-page {
-    display: block;
-}
-#profile:checked ~ .main .profile-page {
-    display: block;
-}
-#settings:checked ~ .main .settings-page {
-    display: block;
-}
-#logout:checked ~ .main .logout-page {
-    display: block;
-}
-
-.logout-btn {
-    padding: 8px 15px;
-    background: #c52929;
-    color: white;
-    cursor: pointer;
-
+    margin: 8px 0;
     border: none;
-    border-radius: 5px;
+    color: #262424;
+    border-radius: 8px;
+    background: #f1f1f1;
+    cursor: pointer;
+    transition: 0.3s;
 }
-@media (max-width: 768px) {
-    .container {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "header"
-            "sidebar"
-            "main"
-            "footer";
-    }
 
-    input[type="text"] {
-        width: 100%;
-    }
+.option-btn:hover {
+    background: #e0e0e0;
+}
+
+.selected {
+    background: #cce5ff !important;
+}
+
+.correct {
+    background: #a6eeb8 !important;
+}
+
+.wrong {
+    background: #f0aeb3 !important;
+}
+
+.buttons {
+    margin-top: 15px;
+    text-align: center;
+}
+
+button {
+    padding: 8px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+}
+
+#submitBtn { background: #28a745; }
+#nextBtn { background: #007bff; }
+#restartBtn { background: #dc3545; }
+
+#result {
+    margin-top: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media(max-width: 480px) {
+    body { padding: 20px; }
+    .quiz-card { padding: 20px; }
 }
