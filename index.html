@@ -1,83 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Interactive Responsive Layout</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Quiz App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
+<div class="page-wrapper">
+    <div class="quiz-card">
 
-    <header class="header">
-        <h1>My Dashboard System</h1>
-    </header>
-    <input type="radio" name="menu" id="dashboard" checked>
-    <input type="radio" name="menu" id="profile">
-    <input type="radio" name="menu" id="settings">
-    <input type="radio" name="menu" id="logout">
+        <h2 class="quiz-title">JavaScript Quiz</h2>
 
-    <aside class="sidebar">
-        <label for="dashboard">Dashboard</label>
-        <label for="profile">Profile</label>
-        <label for="settings">Settings</label>
-        <label for="logout">Logout</label>
-    </aside>
-
-    <main class="main">
-
-        <div class="page dashboard-page">
-
-            <h2>Dashboard Overview</h2>
-            <p>Welcome back, Sakshi! Here's a quick overview of your system activity.</p>
-
-            <div class="card">
-                <h3>Total Projects</h3>
-                <p>12 Active Projects</p>
-            </div>
-            <div class="card">
-                <h3>Tasks Completed</h3>
-                <p>48 Tasks Successfully Completed</p>
-            </div>
-            <div class="card">
-                <h3>Pending Reviews</h3>
-                <p>3 Tasks Waiting for Approval</p>
-            </div>
-
-            <div class="card">
-                <h3>Performance Status</h3>
-                <p>Excellent Progress This Month</p>
-            </div>
+        <div class="progress-container">
+            <div id="progressBar"></div>
         </div>
 
-        <div class="page profile-page">
-            <h2>Candidate Profile</h2>
-            <p><strong>Name:</strong> Sakshi Shinde</p>
-            <p><strong>Role:</strong> Frontend Developer</p>
-            <p><strong>Skills:</strong> HTML, CSS</p>
+        <p id="questionCounter"></p>
+
+        <h3 id="question"></h3>
+
+        <div class="options">
+            <button class="option-btn"></button>
+            <button class="option-btn"></button>
+            <button class="option-btn"></button>
+            <button class="option-btn"></button>
         </div>
 
-        <div class="page settings-page">
-            <h2>Settings</h2>
-            <p>Change Username:</p>
-            <input type="text" placeholder="Enter new username">
-            <br><br>
-            <button class="save-btn">Save Changes</button>
+        <div class="buttons">
+            <button id="submitBtn">Submit</button>
+            <button id="nextBtn">Next</button>
+            <button id="restartBtn">Restart</button>
         </div>
 
-        <div class="page logout-page">
-            <h2>Logout Page</h2>
-            <p>You have been logged out successfully.</p>
-            <label for="dashboard" class="logout-btn">Logout</label>
-        </div>
+        <p id="result"></p>
 
-    </main>
-
-    <footer class="footer">
-        <p>© 2026 Sakshi Shinde</p>
-    </footer>
-     
-
+    </div>
 </div>
 
+<script src="script.js"></script>
 </body>
 </html>
