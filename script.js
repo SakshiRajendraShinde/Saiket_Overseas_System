@@ -1,132 +1,99 @@
-const quizData = [
-    {
-        question: "Which of the following is the start tag of an HTML paragraph element?",
-        options: [
-            "<h1>",
-            "<p>",
-            "<paragraph>",
-            "<p1>"
-        ],
-        correct: 1
-    },
-    {
-        question: "Which of the following HTML element is used to wrap the HTML elements?",
-        options: ["h1", "p", "div", "button"],
-        correct: 2
-    },
-    {
-        question: "Which direction is default for linear gradients?",
-        options: ["bottom to top", "left to right", "right to left", "top to bottom"],
-        correct: 3
-    },
-    {
-        question: "Which approach bootstrap follows first?",
-        options: ["Mobile", "Laptop", "iPad", "None of above"],
-        correct: 0
-    },
-    {
-        question: "Which method is used to select element by ID?",
-        options: [
-            "querySelector()",
-            "getElementById()",
-            "getElementsByClassName()",
-            "getElementsByTagName()"
-        ],
-        correct: 1
-    }
-];
+let todoItemsContainer = document.getElementById("todoItemsContainer");
+let addTodoButton = document.getElementById("addTodoButton");
+let saveTodoButton = document.getElementById("saveTodoButton");
+let userInputElement = document.getElementById("todoUserInput");
 
-let currentQuestion = 0;
-let score = 0;
-let selectedOption = null;
-let answered = false;
-
-const questionEl = document.getElementById("question");
-const optionBtns = document.querySelectorAll(".option-btn");
-const submitBtn = document.getElementById("submitBtn");
-const nextBtn = document.getElementById("nextBtn");
-const restartBtn = document.getElementById("restartBtn");
-const resultEl = document.getElementById("result");
-const questionCounter = document.getElementById("questionCounter");
-const progressBar = document.getElementById("progressBar");
-
-function loadQuestion() {
-    const current = quizData[currentQuestion];
-    questionEl.textContent = current.question;
-    questionCounter.textContent = `Question ${currentQuestion + 1} of ${quizData.length}`;
-    progressBar.style.width = ((currentQuestion) / quizData.length) * 100 + "%";
-
-    optionBtns.forEach((btn, index) => {
-        btn.textContent = current.options[index];
-        btn.className = "option-btn";
-        btn.disabled = false;
-    });
-
-    selectedOption = null;
-    answered = false;
+function getTodoListFromLocalStorage() {
+  let stringifiedTodoList = localStorage.getItem("todoList");
+  return stringifiedTodoList ? JSON.parse(stringifiedTodoList) : [];
 }
 
-optionBtns.forEach((btn, index) => {
-    btn.addEventListener("click", () => {
-        if (answered) return;
+let todoList = getTodoListFromLocalStorage();
+let todosCount = todoList.length;
 
-        optionBtns.forEach(b => b.classList.remove("selected"));
-        btn.classList.add("selected");
-        selectedOption = index;
-    });
+saveTodoButton.onclick = function () {
+  localStorage.setItem("todoList", JSON.stringify(todoList));
+  alert("Tasks Saved ✅");
+};
+
+addTodoButton.onclick = function () {
+  onAddTodo();
+};
+
+userInputElement.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    onAddTodo();
+  }
 });
 
-submitBtn.addEventListener("click", () => {
-    if (selectedOption === null) {
-        alert("Please select an answer before submitting!");
-        return;
-    }
+function onAddTodo() {
+  let userInputValue = userInputElement.value;
 
-    answered = true;
-    const correctIndex = quizData[currentQuestion].correct;
+  if (userInputValue === "") {
+    alert("Enter valid text!");
+    return;
+  }
 
-    optionBtns.forEach((btn, index) => {
-        btn.disabled = true;
+  todosCount++;
 
-        if (index === correctIndex) {
-            btn.classList.add("correct");
-        }
+  let newTodo = {
+    text: userInputValue,
+    uniqueNo: todosCount,
+    isChecked: false
+  };
 
-        if (index === selectedOption && selectedOption !== correctIndex) {
-            btn.classList.add("wrong");
-        }
-    });
+  todoList.push(newTodo);
+  createAndAppendTodo(newTodo);
+  userInputElement.value = "";
+}
 
-    if (selectedOption === correctIndex) score++;
-});
+function createAndAppendTodo(todo) {
+  let todoId = "todo" + todo.uniqueNo;
 
-nextBtn.addEventListener("click", () => {
-    if (!answered) {
-        alert("Please submit your answer first!");
-        return;
-    }
+  let li = document.createElement("li");
+  li.id = todoId;
 
-    currentQuestion++;
+  let leftDiv = document.createElement("div");
+  leftDiv.classList.add("task-left");
 
-    if (currentQuestion < quizData.length) {
-        loadQuestion();
-    } else {
-        questionEl.textContent = "🎉 Quiz Completed!";
-        questionCounter.textContent = "";
-        progressBar.style.width = "100%";
-        resultEl.textContent = `Your Score: ${score} / ${quizData.length}`;
-        submitBtn.style.display = "none";
-        nextBtn.style.display = "none";
-    }
-});
+  let checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.checked = todo.isChecked;
 
-restartBtn.addEventListener("click", () => {
-    currentQuestion = 0;
-    score = 0;
-    resultEl.textContent = "";
-    submitBtn.style.display = "inline-block";
-    nextBtn.style.display = "inline-block";
-    loadQuestion();
-});
+  let span = document.createElement("span");
+  span.textContent = todo.text;
+  span.classList.add("task-text");
 
-loadQuestion();
+  if (todo.isChecked) {
+    span.classList.add("checked");
+  }
+
+  checkbox.onclick = function () {
+    span.classList.toggle("checked");
+    todo.isChecked = !todo.isChecked;
+  };
+
+  leftDiv.appendChild(checkbox);
+  leftDiv.appendChild(span);
+
+  let deleteIcon = document.createElement("i");
+  deleteIcon.classList.add("bi", "bi-trash", "delete-btn");
+
+  deleteIcon.onclick = function () {
+    li.style.opacity = "0";
+    li.style.transform = "translateX(20px)";
+    setTimeout(() => {
+      todoItemsContainer.removeChild(li);
+      todoList = todoList.filter(t => t.uniqueNo !== todo.uniqueNo);
+    }, 300);
+  };
+
+  li.appendChild(leftDiv);
+  li.appendChild(deleteIcon);
+
+  todoItemsContainer.appendChild(li);
+}
+
+for (let todo of todoList) {
+  createAndAppendTodo(todo);
+}
