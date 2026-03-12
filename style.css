@@ -1,170 +1,186 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
 }
 
-body {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px;  
-}
-
-.page-wrapper {
-  width: 100%;
-  max-width: 500px;
-}
-
-.todo-card {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-  backdrop-filter: blur(10px);
-  animation: fadeIn 0.6s ease-in-out;
-}
-
-.app-title {
-  text-align: center;
-  margin-bottom: 25px;
-  font-weight: 600;
-  color: #333;
-}
-
-.input-section {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.input-section input {
-  flex: 1;
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  transition: 0.3s;
-}
-
-.input-section input:focus {
-  outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 6px #667eea;
-}
-
-.input-section button {
-  background: #667eea;
-  color: white;
-  border: none;
-  padding: 0 18px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.input-section button:hover {
-  background: #5a67d8;
-  transform: scale(1.05);
-}
-
-ul {
-  list-style: none;
-}
-
-li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #f4f6ff;
-  padding: 12px 15px;
-  border-radius: 10px;
-  margin-bottom: 12px;
-  animation: slideIn 0.3s ease-in-out;
-  transition: 0.3s;
-}
-
-li:hover {
-  background: #e6ebff;
-}
-
-.task-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-li input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-}
-
-.task-text {
-  font-size: 15px;
-}
-
-.checked {
-  text-decoration: line-through;
-  color: gray;
-}
-
-.delete-btn {
-  color: #ff4d4d;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.delete-btn:hover {
-  transform: scale(1.2);
-}
-
-.bottom-section {
-  text-align: center;
-  margin-top: 15px;
-}
-
-.save-btn {
-  background: #28a745;
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.save-btn:hover {
-  background: #218838;
-  transform: scale(1.05);
+body{
+line-height:1.6;
 }
 
  
-@keyframes slideIn {
-  from {
-    transform: translateY(-10px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px;
+background:#6c63ff;
+color:white;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.nav-links{
+display:flex;
+list-style:none;
 }
+
+.nav-links li{
+margin-left:20px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:white;
+font-weight:bold;
+}
+
+.menu-btn{
+display:none;
+font-size:25px;
+background:none;
+border:none;
+color:white;
+cursor:pointer;
+}
+
+
+.hero{
+height:90vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:linear-gradient(120deg,#6c63ff,#9f8fff);
+color:white;
+}
+
+.hero h1{
+font-size:45px;
+margin-bottom:15px;
+animation:fadeIn 3s;
+}
+
+.hero p{
+margin-bottom:20px;
+}
+
+.hero button{
+padding:12px 25px;
+border:none;
+background:#ffcc00;
+font-weight:bold;
+cursor:pointer;
+border-radius:5px;
+transition:0.3s;
+}
+
+.hero button:hover{
+transform:scale(1.1);
+}
+ 
+
+.features{
+padding:60px 20px;
+text-align:center;
+}
+
+.feature-container{
+display:flex;
+justify-content:center;
+gap:30px;
+margin-top:40px;
+flex-wrap:wrap;
+}
+
+.card{
+background:#f4f4f4;
+padding:30px;
+width:250px;
+border-radius:10px;
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+ 
+
+.contact{
+padding:60px 20px;
+text-align:center;
+background:#f9f9f9;
+}
+
+.contact form{
+display:flex;
+flex-direction:column;
+max-width:400px;
+margin:auto;
+}
+
+.contact input,
+.contact textarea{
+margin:10px 0;
+padding:10px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+.contact button{
+padding:12px;
+border:none;
+background:#6c63ff;
+color:white;
+cursor:pointer;
+border-radius:5px;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#333;
+color:white;
+}
+
 
  
-@media(max-width: 480px) {
-  body {
-    padding: 20px;
-  }
 
-  .todo-card {
-    padding: 20px;
-  }
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+ 
+
+@media(max-width:768px){
+
+.nav-links{
+display:none;
+flex-direction:column;
+background:#6c63ff;
+position:absolute;
+top:70px;
+right:0;
+width:200px;
+}
+
+.nav-links.active{
+display:flex;
+}
+
+.menu-btn{
+display:block;
+}
+
+.hero h1{
+font-size:32px;
+}
+
 }
