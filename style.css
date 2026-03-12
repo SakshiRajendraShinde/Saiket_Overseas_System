@@ -1,0 +1,160 @@
+.heading{
+    font-family:"Roboto";
+    color:#262525;
+    font-size:30px;
+    margin: 20px;
+    font-weight: bold;
+}
+.container{
+    color:#e4fafe;
+}
+.product-card{
+    display: flex;
+    align-items: center; 
+    gap: 30px; 
+    width: 900px; 
+    margin: 45px; 
+    background-color: linear-gradient(to top #dadada, #e1e1e1 );
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 6px 6px 6px 6px rgba(243, 243, 243, 0.596);
+}
+.shoes-image{
+    margin: 20px;
+    border-width: 0px;
+    border-radius: 5px;
+    height: 170px;
+    width: 160px;
+    box-shadow: 6px 6px 6px 6px rgba(227, 226, 226, 0.658);
+}
+.about-shoes{
+    font-family: "Arial";
+    font-size: 16px;
+    padding: 20px;
+    color: #393939;
+}
+.price{
+    display: flex; 
+    align-items: center;
+    gap: 6px;
+}
+.shoes-price{
+    font-family: "Arial"; 
+    color: #797979;
+    font-size: 15px;
+    margin-left: 30px;
+    text-decoration: line-through;
+}
+.discount{
+    font-family: "Arial";
+    color: #0a9c0a;
+}
+.buy-at{
+    font-family: "Arial";
+    font-size: 15px; 
+    color:#1245bc;
+    font-weight: bold;
+    margin-left: 30px;
+    
+}
+.select-size{
+    color: #434242;
+    font-weight: 500;
+    font-family: "Arial";
+    font-size: 13px;
+    margin-left: 30px;
+}
+.chart-size{
+    font-weight: bold;
+    color: #1245bc;
+}
+.size-options{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+}
+.size-btn{
+    width: 30px;
+    height: 30px;
+    border: 1px solid;
+    border-color: #ddd;
+    background: #ffffff;
+    border-radius: 10px;
+    font-size: 10px;
+    cursor: pointer;
+}
+.size-btn:hover {
+    border-color: #1a73e8;
+    background-color: #e8f0fe;
+}
+.reviews{
+    font-family: "Arial";
+    font-size: 12px;
+    color: #434242;
+    margin-left: 30px;
+    padding-top: 8px;
+}
+.ratings{
+    font-family: "Arial";
+    font-size: 13px;
+    color: #434242;
+    margin-left: 30px
+}
+.rated{
+    color:#eded29;
+}
+.unrated{
+    color: grey;
+}
+.features li{
+    padding: 10px;
+    font-family: "Arial";
+    list-style: none;
+    color: #393939;
+}
+.features li::before{
+    content: "\2714";
+    position: relative on li;
+    bottom: 0px;
+    top: 2px;
+    width: 22px; 
+    height: 22px;
+    background: #12cf57;
+    color: #ffffff;
+    border-radius: 10%;
+    text-align: center;
+    font-size: 13px; 
+    font-weight: bold;
+    margin-right: 10px;
+    padding: 3px;
+}
+.add-to-cart-btn{
+    font-family: "Arial";
+    color: #dedcdc;
+    padding: 10px;
+    margin: 17px;
+    border-width: 0px;
+    border-radius: 5px;
+    background: linear-gradient(to bottom, #2bcd6e, #20c050);
+}
+.add-to-cart-btn:hover{
+    transform: scale(1.03);
+    box-shadow: 0px 5px 15px #28a745;
+
+}
+.order-now-btn{
+    font-family: "Arial";
+    color: #dedcdc;
+    padding: 10px; 
+    margin: 17px;
+    border-width: 0px;
+    border-radius: 5px;
+    background: linear-gradient(to bottom, #ff6b6b, #e35849);
+}
+.order-now-btn:hover{
+    transform: scale(1.03);
+    box-shadow: 0px 5px 15px #9f4e02;
+}
+i{
+    padding: 2px;
+}
